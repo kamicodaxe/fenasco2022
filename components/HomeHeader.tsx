@@ -40,7 +40,7 @@ const HomeHeader: React.FC<Props> = ({ active }) => {
                 <div className="container flex justify-center align-start mx-auto">
                     <span className={activeLink('info')} >
                         <Link href='/results' className="flex items-center -mb-1">
-                            <span className="p-4 uppercase">
+                            <span className="uppercase">
                                 Résultats
                             </span>
                         </Link>
@@ -59,7 +59,7 @@ const HomeHeader: React.FC<Props> = ({ active }) => {
                     </Link>
                     <span className={activeLink('info')} >
                         <Link href='/news' className="flex items-center -mb-1">
-                            <span className="p-4 uppercase">
+                            <span className="uppercase">
                                 Actualités
                             </span>
                         </Link>
