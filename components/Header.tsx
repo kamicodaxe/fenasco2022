@@ -27,7 +27,7 @@ const Header: React.FC<Props> = ({ title, locale }) => {
     return (
         <header className="flex flex-col justify-between bg-[url('/images/background.png')] bg-cover">
             <nav className="p-4 text-gray-800">
-                <div className="container flex justify-center align-start mx-auto">
+                <div className="container flex justify-around md:justify-center align-start mx-auto">
                     <span className={activeLink('results')} >
                         <Link href='/results' className="flex items-center -mb-1">
                             <span className="p-4 uppercase">

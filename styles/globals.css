@@ -25,7 +25,7 @@ a {
 
 @layer components {
   .link-active {
-    @apply text-tertiary border-b border-b-tertiary;
+    @apply text-white bg-tertiary rounded-lg ;
   }
 }
 

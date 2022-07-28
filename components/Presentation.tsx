@@ -14,7 +14,7 @@ const Presentation: React.FC<Props> = ({ locale }) => {
         <section className="text-gray-800">
             <div className="container mx-auto my-16 lg:px-16">
                 <div className="flex flex-col md:flex-row md:items-center lg:items-end">
-                    <div className="flex justify-center items-center px-4 h-64 sm:h-96 md:w-[200%] md:px-0 bg-black">
+                    <div className="flex justify-center items-center px-0 min-h-64 sm:h-96 md:w-[200%] bg-black">
                         <ReactPlayer controls url={videoUrl} />
                     </div>
                     <div className="p-2 pb-4 md:pl-8 md:self-end">
