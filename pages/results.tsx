@@ -14,7 +14,7 @@ const Results: NextPage = () => {
       {/* <NavBar active="contact" /> */}
       <Header title="Results" />
       <div className="flex">
-        <div className="flex flex-col w-16 md:w-64 max-h-screen bg-white border-r">
+        <div className="flex flex-col w-16 md:w-72 max-h-screen bg-white border-r">
           <div className="flex flex-col justify-between">
             <nav>
               {
@@ -29,7 +29,7 @@ const Results: NextPage = () => {
                     <span className="w-8 h-8 md:w-6 md:h-6 relative">
                       <Image className="object-contain" width={128} height={128} src={_sport.image} alt={'Button: ' + _sport.name} />
                     </span>
-                    <span className="mx-4 font-medium hidden md:block">{_sport.name}</span>
+                    <span className="ml-4 font-medium hidden md:block">{_sport.name}</span>
                   </button>
                 ))
               }

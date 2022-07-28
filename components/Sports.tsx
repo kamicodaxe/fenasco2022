@@ -27,7 +27,7 @@ const Sports: React.FC<{}> = ({ }) => {
                             <div className="p-2 pb-4 text-center">
                                 <h3 className="text-2xl font-bold text-gray-800 mb-2">{_sport.name}</h3>
                                 <button onClick={navigate(_sport.name)} className="text-tertiary text-md hover:underline">
-                                    Résultat
+                                    Résultats
                                 </button>
                             </div>
                         </div>

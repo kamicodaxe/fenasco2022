@@ -1,19 +1,21 @@
 
+import athlete from '../assets/images/sports/athlete.svg'
+import badminton from '../assets/images/sports/badminton.svg'
+import basketball from '../assets/images/sports/basketball.svg'
 import football from '../assets/images/sports/football.svg'
 import gymnast from '../assets/images/sports/gymnast.svg'
 import handball from '../assets/images/sports/handball.svg'
-import basketball from '../assets/images/sports/basketball.svg'
-import fight from '../assets/images/sports/fight.svg'
 import judo from '../assets/images/sports/judo.svg'
 import olympics from '../assets/images/sports/olympics.svg'
 import tableTenis from '../assets/images/sports/table-tenis.svg'
 import volleyball from '../assets/images/sports/volleyball.svg'
 import weightlifting from '../assets/images/sports/weightlifting.svg'
+import wrestling from '../assets/images/sports/wrestling.svg'
 
 const sports = [
     {
         name: "Athlétisme",
-        image: football
+        image: athlete
     },
     {
         name: "Basketball",
@@ -37,7 +39,7 @@ const sports = [
     },
     {
         name: "Luttes",
-        image: fight
+        image: wrestling
     },
     {
         name: "Tennis de table",
@@ -53,7 +55,7 @@ const sports = [
     },
     {
         name: "Badminton",
-        image: football
+        image: badminton
     },
     {
         name: "Bras de fer",
