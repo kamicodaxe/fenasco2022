@@ -4,10 +4,12 @@ import logoImage from '../assets/images/logo.png'
 import mvomeka from '../assets/images/mvomeka.png'
 import boy from '../assets/images/boy.png'
 import girl from '../assets/images/girl.png'
+import { useMemo } from "react"
 
 
 interface Props {
     active: string
+    locale: string
 }
 
 const routes = [
@@ -24,7 +26,7 @@ const routes = [
         path: "/contact"
     }
 ]
-const HomeHeader: React.FC<Props> = ({ active }) => {
+const HomeHeader: React.FC<Props> = ({ active, locale }) => {
     const activeLink = (routeName: string) => {
         // TODO: Use classnames from npm
         if (!active) return 'flex text-2xl hover:text-tertiary transition-colors cursor-pointer'
@@ -34,6 +36,8 @@ const HomeHeader: React.FC<Props> = ({ active }) => {
         return 'flex text-2xl hover:text-tertiary transition-colors cursor-pointer'
     }
 
+    const isFrench = useMemo(() => locale.toLowerCase().includes('fr'), [locale])
+
     return (
         <header className="h-screen flex flex-col justify-between bg-[url('/images/background.png')] bg-cover">
             <nav className="p-4 text-gray-800">
@@ -41,7 +45,7 @@ const HomeHeader: React.FC<Props> = ({ active }) => {
                     <span className={activeLink('info')} >
                         <Link href='/results' className="flex items-center -mb-1">
                             <span className="uppercase">
-                                Résultats
+                                {isFrench ? 'Résultats' : 'Results'}
                             </span>
                         </Link>
                     </span>
@@ -60,7 +64,7 @@ const HomeHeader: React.FC<Props> = ({ active }) => {
                     <span className={activeLink('info')} >
                         <Link href='/news' className="flex items-center -mb-1">
                             <span className="uppercase">
-                                Actualités
+                                {isFrench ? 'Actualités' : 'News'}
                             </span>
                         </Link>
                     </span>
@@ -69,9 +73,16 @@ const HomeHeader: React.FC<Props> = ({ active }) => {
             </nav>
 
             <div className="container mx-auto flex flex-col items-center px-4 text-center md:px-10 lg:px-12 xl:max-w-3xl">
-                <span className="text-5xl pb-12 md:text-4xl pb-4 font-bold text-tertiary uppercase">Bienvenue,</span>
+                <span className="text-5xl pb-12 md:text-4xl pb-4 font-bold text-tertiary uppercase">
+                    {isFrench ? 'Bienvenue,' : 'Welcome,'}
+                </span>
                 <h1 className="text-5xl md:text-4xl font-bold leading-none uppercase">
-                    22<sup>éme</sup> édition des finales nationales des jeux scolaires
+                    22<sup>{isFrench ? 'éme' : 'nd'}</sup>
+                    {
+                        isFrench ?
+                            'édition des finales nationales des jeux scolaires' :
+                            'edition of national school games finals'
+                    }
                 </h1>
             </div>
 
