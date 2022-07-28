@@ -1,13 +1,20 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useMemo } from 'react'
 import Header from '../../components/Header'
 import Layout from '../../components/Layout'
 
 const News: NextPage = () => {
+  const { locale } = useRouter()
+  const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
+  const title = isFr ? "Actualité, FENASSCO 2022" : "News, FENASSCO 2022"
+  const desc = isFr ? "Actualités des Jeux FENASSCO 2022" : "All news from FENASSCO GAMES"
+
   return (
-    <Layout>
-      <Header title="News" />
+    <Layout locale={locale as string} title={title} desc={desc}>
+      <Header locale={locale as string} title="News" />
       <section className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
         {
           [

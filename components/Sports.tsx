@@ -3,16 +3,20 @@ import { useRouter } from "next/router"
 import { useCallback, useMemo } from "react"
 import { sports } from "../lib/data"
 
-const Sports: React.FC<{}> = ({ }) => {
-    const router = useRouter()
+interface Props {
+    locale: string
+}
 
+const Sports: React.FC<Props> = ({ locale }) => {
     const navigate = useCallback((sport: string) => () => router.push(`/results/${sport}`), [])
+    const router = useRouter()
+    const isFr = useMemo(() => locale.toLowerCase().includes('fr'), [locale])
+    const title = isFr ? "12 Disciplines Sportives" : "12 Sports"
 
     return (
         <section className=" text-gray-800 py-16 space-y-6">
             <div className="container mx-auto text-center">
-                <h2 className="text-5xl font-bold">Disciplines</h2>
-                <p className="text-gray-400">12 Disciplines Sportives </p>
+                <h2 className="text-5xl font-bold">{title}</h2>
             </div>
             <div className="container mx-auto grid justify-center gap-4 max-h-screen overflow-y-scroll sm:grid-cols-2 lg:grid-cols-3">
 

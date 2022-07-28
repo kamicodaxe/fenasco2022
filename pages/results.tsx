@@ -1,18 +1,22 @@
 import classNames from 'classnames'
 import type { NextPage } from 'next'
 import Image from 'next/image'
-import router from 'next/router'
-import { useCallback } from 'react'
+import router, { useRouter } from 'next/router'
+import { useCallback, useMemo } from 'react'
 import Header from '../components/Header'
 import Layout from '../components/Layout'
 import { sports } from '../lib/data'
 
-const Results: NextPage = () => {
+const Results: NextPage = ({ }) => {
+  const { locale, locales, asPath } = useRouter()
   const navigate = useCallback((sport: string) => () => router.push(`/results/${sport}`), [])
+  const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
+  const title = isFr ? "Résultats des Jeuxs" : "Games Results"
+  const desc = isFr ? "Retrouvez les résultats des Jeux FENASSCO 2022" : "List of all FENASSCO GAMES scores"
+
   return (
-    <Layout>
-      {/* <NavBar active="contact" /> */}
-      <Header title="Results" />
+    <Layout locale={locale as string} title={title} desc={desc}>
+      <Header locale={locale as string} title={isFr ? "Résultats" : "News"} />
       <div className="flex">
         <div className="flex flex-col w-16 md:w-72 max-h-screen bg-white border-r">
           <div className="flex flex-col justify-between">
@@ -39,7 +43,9 @@ const Results: NextPage = () => {
         </div>
 
         <div className="flex flex-col justify-center align-center w-full">
-          <p className='text-2xl text-center text-gray-500'>Sélectionnez une discipline</p>
+          <p className='text-2xl text-center text-gray-500'>
+            {isFr ? "Sélectionnez une discipline à gauche" : "Choose a sport on the left"}
+          </p>
         </div>
 
       </div>

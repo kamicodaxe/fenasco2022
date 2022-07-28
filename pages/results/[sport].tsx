@@ -2,21 +2,25 @@ import classNames from 'classnames'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import Header from '../../components/Header'
 import Layout from '../../components/Layout'
 import { sports } from '../../lib/data'
 
+interface Props { }
 
-const Results: NextPage = () => {
+const Results: NextPage<Props> = () => {
     const router = useRouter()
     const { sport: sportName } = router.query
-
     const navigate = useCallback((sport: string) => () => router.push(`/results/${sport}`), [])
+    const { locale } = useRouter()
+    const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
+    const title = (isFr ? "Résultats " : "Results ") + sportName
+    const desc = sportName + (isFr ? "Résultats de Match FENASSCO 2022" : "Match results FENASSCO 2022")
 
     return (
-        <Layout>
-            <Header title="Results" />
+        <Layout locale={locale as string} title={title} desc={desc}>
+            <Header locale={locale as string} title="Results" />
             <div className="flex">
                 <div className="flex flex-col w-16 md:w-72 max-h-screen bg-white border-r">
                     <div className="flex flex-col justify-between">
@@ -44,8 +48,8 @@ const Results: NextPage = () => {
                 </div>
 
                 <div className="flex flex-col justify-center align-center w-full">
-                    <p className='text-2xl text-center text-gray-500'>{sportName}</p>
-                    <span className="ml-4 text-center font-medium text-gray-500">indisponible!</span>
+                    <p className='text-2xl text-center text-gray-500'>{title}</p>
+                    <span className="ml-4 text-center font-medium text-gray-500">{isFr ? "indisponible!" : "Unavailable"}</span>
                 </div>
 
             </div>

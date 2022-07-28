@@ -11,16 +11,18 @@ import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
   const { locale, locales, asPath } = useRouter()
+  const title = "Jeux FENASCO 2022"
+  const desc = "FENASCO 2022 - 22ÉME ÉDITION DES FINALES NATIONALES DES JEUX SCOLAIRES"
 
   return (
-    <Layout>
+    <Layout locale={locale as string} title={title} desc={desc}>
       <HomeHeader locale={locale as string} active="home" />
       <Presentation locale={locale as string} />
       <Statistics locale={locale as string} />
-      <Sports />
+      <Sports locale={locale as string} />
       <Covid19 />
-      <Magazine />
-      <Partners />
+      <Magazine locale={locale as string} />
+      <Partners locale={locale as string} />
     </Layout>
   )
 }

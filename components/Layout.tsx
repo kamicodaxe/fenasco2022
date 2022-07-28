@@ -1,33 +1,44 @@
 import Head from 'next/head'
+import { useMemo } from 'react'
 import Footer from "./Footer"
 
 
 interface Props extends React.PropsWithChildren {
+    locale: string
+    title: string
+    desc: string
 }
 
-const Layout: React.FC<Props> = ({ children }) => {
+interface Props {
+    locale: string
+}
 
+const Layout: React.FC<Props> = ({ children, locale, title, desc }) => {
+    const isFr = useMemo(() => locale.toLowerCase().includes('fr'), [locale])
+    const lang = isFr ? 'fr_FR' : 'en_US'
+    const siteName = isFr ? "JEUX FENASSCO 2022" : "FENASSCO GAMES 2022"
+    
     return (
         <div>
             <Head>
-                <title>FENASCO 2022</title>
-                <meta name="description" content="FENASCO 2022 - 22ÉME ÉDITION DES FINALES NATIONALES DES JEUX SCOLAIRES" />
+                <title>{title}</title>
+                <meta name="description" content={desc} />
                 <link rel="icon" href="/favicon.ico" />
-                <meta name="description" content="FENASCO 2022 - 22ÉME ÉDITION DES FINALES NATIONALES DES JEUX SCOLAIRES" />
+                <meta name="description" content={desc} />
                 <meta name="robots" content="max-image-preview:large" />
                 {/* <link rel="canonical" href="https://example.com/" /> */}
-                <meta property="og:locale" content="fr_FR" />
-                <meta property="og:site_name" content="FENASCO 2022" />
+                <meta property="og:locale" content={lang} />
+                <meta property="og:site_name" content={siteName} />
                 <meta property="og:type" content="website" />
-                <meta property="og:title" content="FENASCO 2022" />
-                <meta property="og:description" content="FENASCO 2022 - 22ÉME ÉDITION DES FINALES NATIONALES DES JEUX SCOLAIRES" />
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={desc} />
                 {/* <meta property="og:url" content="https://example.com/" /> */}
-                {/* <meta property="og:image" content="https://example.com/favicon.ico" /> */}
-                {/* <meta property="og:image:secure_url" content="https://example.com/favicon.ico" /> */}
+                <meta property="og:image" content="/favicon.ico" />
+                <meta property="og:image:secure_url" content="/favicon.ico" />
                 <meta name="twitter:card" content="summary" />
-                <meta name="twitter:title" content="FENASCO 2022" />
-                <meta name="twitter:description" content="FENASCO 2022 - 22ÉME ÉDITION DES FINALES NATIONALES DES JEUX SCOLAIRES" />
-                {/* <meta name="twitter:image" content="https://example.com/favicon.ico" /> */}
+                <meta name="twitter:title" content={title} />
+                <meta name="twitter:description" content={desc} />
+                <meta name="twitter:image" content="/favicon.ico" />
             </Head>
 
             <body>

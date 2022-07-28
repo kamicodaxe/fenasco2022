@@ -5,13 +5,19 @@ import logo1 from '../assets/images/logo-1.svg'
 import logo2 from '../assets/images/logo-2.svg'
 import logo3 from '../assets/images/logo-3.svg'
 import logo4 from '../assets/images/logo-4.svg'
+import { useMemo } from "react"
 
-const Partners: React.FC<{}> = ({ }) => {
+interface Props {
+    locale: string
+}
+
+const Partners: React.FC<Props> = ({ locale }) => {
+    const isFr = useMemo(() => locale.toLowerCase().includes('fr'), [locale])
     return (
         <section className="relative overflow-hidden">
             <div className="px-5 py-24 mx-auto lg:px-16 ">
                 <div className="container mx-auto text-center pb-16">
-                    <h2 className="text-4xl font-bold">Partenaires</h2>
+                    <h2 className="text-4xl font-bold">{isFr ? "Partenaires" : "Partners"}</h2>
                 </div>
 
                 <div className="mx-auto text-center">

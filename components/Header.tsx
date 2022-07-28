@@ -4,17 +4,21 @@ import logoImage from '../assets/images/logo.png'
 import mvomeka from '../assets/images/mvomeka.png'
 import boy from '../assets/images/boy.png'
 import girl from '../assets/images/girl.png'
+import { useMemo } from "react"
+import { useRouter } from "next/router"
 
 interface Props {
     title: string
+    locale: string
 }
 
-const Header: React.FC<Props> = ({ title }) => {
+const Header: React.FC<Props> = ({ title, locale }) => {
+    const { pathname } = useRouter()
+    const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
 
     const activeLink = (routeName: string) => {
         // TODO: Use classnames from npm
-        if (!title) return 'flex text-2xl hover:text-tertiary transition-colors cursor-pointer'
-        const isActive = title.toLowerCase().includes(routeName.toLowerCase())
+        const isActive = pathname.toLowerCase().includes(routeName.toLowerCase())
         console.log(isActive)
         if (isActive) return 'flex text-2xl cursor-pointer link-active'
         return 'flex text-2xl hover:text-tertiary transition-colors cursor-pointer'
@@ -27,7 +31,7 @@ const Header: React.FC<Props> = ({ title }) => {
                     <span className={activeLink('results')} >
                         <Link href='/results' className="flex items-center -mb-1">
                             <span className="p-4 uppercase">
-                                Résultats
+                                {isFr ? 'Résultats' : 'Results'}
                             </span>
                         </Link>
                     </span>
@@ -46,7 +50,7 @@ const Header: React.FC<Props> = ({ title }) => {
                     <span className={activeLink('news')} >
                         <Link href='/news' className="flex items-center -mb-1">
                             <span className="p-4 uppercase">
-                                Actualités
+                                {isFr ? 'Actualités' : 'News'}
                             </span>
                         </Link>
                     </span>
@@ -54,11 +58,11 @@ const Header: React.FC<Props> = ({ title }) => {
 
             </nav>
 
-            <div className="container mx-auto flex flex-col items-center px-4 text-center md:translate-y-12 md:px-10 lg:px-12 xl:max-w-3xl">
+            {/* <div className="container mx-auto flex flex-col items-center px-4 text-center md:translate-y-12 md:px-10 lg:px-12 xl:max-w-3xl">
                 <h1 className="text-2xl text-tertiary md:text-4xl font-bold leading-none uppercase">
                     {title}
                 </h1>
-            </div>
+            </div> */}
 
             {/* <Image width={620} src={mvomeka} className="object-contain w-2/3" /> */}
 
