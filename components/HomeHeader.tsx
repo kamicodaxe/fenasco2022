@@ -69,7 +69,7 @@ const HomeHeader: React.FC<Props> = ({ active }) => {
             </nav>
 
             <div className="container mx-auto flex flex-col items-center px-4 text-center md:px-10 lg:px-12 xl:max-w-3xl">
-                <span className="text-5xl md:text-4xl md:pb-4 font-bold text-tertiary uppercase">Bienvenue,</span>
+                <span className="text-5xl pb-12 md:text-4xl pb-4 font-bold text-tertiary uppercase">Bienvenue,</span>
                 <h1 className="text-6xl md:text-4xl font-bold leading-none uppercase">
                     22<sup>éme</sup> édition des finales nationales des jeux scolaires
                 </h1>

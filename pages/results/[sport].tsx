@@ -34,7 +34,7 @@ const Results: NextPage = () => {
                                         <span className="w-8 h-8 md:w-6 md:h-6 relative">
                                             <Image className="object-contain" width={128} height={128} src={_sport.image} alt={'button: ' + _sport.name} />
                                         </span>
-                                        <span className="ml-4 font-medium hidden md:block">{_sport.name}</span>
+                                        <span className="ml-4 font-medium hidden md:block">{_sport.name} 4</span>
                                     </button>
                                 ))
                             }
@@ -45,6 +45,7 @@ const Results: NextPage = () => {
 
                 <div className="flex flex-col justify-center align-center w-full">
                     <p className='text-2xl text-center text-gray-500'>{sportName}</p>
+                    <span className="ml-4 text-center font-medium text-gray-500">indisponible!</span>
                 </div>
 
             </div>
