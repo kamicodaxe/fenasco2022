@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import Header from '../components/Header'
-import Layout from '../components/Layout'
+import Header from '../../components/Header'
+import Layout from '../../components/Layout'
 
 const News: NextPage = () => {
   return (
@@ -17,7 +17,7 @@ const News: NextPage = () => {
             "https://source.unsplash.com/random/1280x723",
 
           ].map(link => (
-            <Link key={link} rel="noopener noreferrer" href={'/news'} >
+            <Link key={link} rel="noopener noreferrer" href={'/news/article'} >
               <span className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:cursor-pointer hover:no-underline focus:no-underline lg:grid lg:grid-cols-12">
                 <div className="w-full h-64 sm:h-96 lg:col-span-7">
                   <Image src={link} width={720} height={420} className="object-cover bg-gray-400 rounded" alt='Blog post image' />
