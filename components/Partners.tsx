@@ -5,6 +5,10 @@ import logo1 from '../assets/images/logo-1.svg'
 import logo2 from '../assets/images/logo-2.svg'
 import logo3 from '../assets/images/logo-3.svg'
 import logo4 from '../assets/images/logo-4.svg'
+import logo7 from '../assets/images/logo-7.svg'
+import logo8 from '../assets/images/logo-8.svg'
+import logo9 from '../assets/images/logo-9.svg'
+import logo10 from '../assets/images/logo-10.svg'
 import { useMemo } from "react"
 
 interface Props {
@@ -36,6 +40,18 @@ const Partners: React.FC<Props> = ({ locale }) => {
                         </div>
                         <div>
                             <Image className="h-10 mx-auto lg:h-12" src={logo4} width={128} alt="Sponsor FENASCO 2022" />
+                        </div>
+                        <div>
+                            <Image className="h-10 mx-auto lg:h-12" src={logo7} width={128} alt="Sponsor FENASCO 2022" />
+                        </div>
+                        <div>
+                            <Image className="h-10 mx-auto lg:h-12" src={logo8} width={128} alt="Sponsor FENASCO 2022" />
+                        </div>
+                        <div>
+                            <Image className="h-10 mx-auto lg:h-12" src={logo9} width={128} alt="Sponsor FENASCO 2022" />
+                        </div>
+                        <div>
+                            <Image className="h-10 mx-auto lg:h-12" src={logo10} width={128} alt="Sponsor FENASCO 2022" />
                         </div>
                     </div>
                 </div>
