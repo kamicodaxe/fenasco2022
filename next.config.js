@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['source.unsplash.com'],
+    domains: ['source.unsplash.com', 'www.datocms-assets.com'],
   },
   i18n: {
     // providing the locales supported by your application
