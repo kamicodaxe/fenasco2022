@@ -69,10 +69,10 @@ const Article: NextPage<Props> = ({ data }) => {
                                         <ImageGallery
                                         // @ts-ignore
                                             items={article.gallery.map(_item => ({
-                                                original: _item.url,
+                                                original: _item?.url,
                                                 originalAlt: _item?.alt || 'Mvomeka Fenassco 2022 Gallery image',
                                                 thumbnailAlt: _item.responsiveImage?.alt || 'Mvomeka Fenassco 2022 Gallery image',
-                                                thumbnail: _item.responsiveImage.src
+                                                thumbnail: _item.responsiveImage?.src || ''
                                             }))}
                                         />
                                     }
