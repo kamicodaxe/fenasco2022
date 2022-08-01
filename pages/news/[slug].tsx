@@ -1,7 +1,8 @@
+import { useMemo } from 'react'
 import type { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useMemo } from 'react'
+import { StructuredText } from 'react-datocms'
 import dynamic from "next/dynamic";
 // @ts-ignore
 const ImageGallery = dynamic(import('react-image-gallery'));
@@ -9,7 +10,7 @@ import Header from '../../components/Header'
 import Layout from '../../components/Layout'
 import { ARTICLES_QUERY, ARTICLE_QUERY, IArticle, IData, request } from '../../lib/datocms'
 
-import { StructuredText } from 'react-datocms'
+import "react-image-gallery/styles/css/image-gallery.css";
 
 interface Props {
     data: {
@@ -21,7 +22,6 @@ const Article: NextPage<Props> = ({ data }) => {
     const { locale } = useRouter()
     const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
     const article = useMemo(() => data.article, [data])
-    console.log(article)
     const title = article.title
     const desc = article.desc
     const galleryTitle = isFr ? "Galerie" : "Gallery"
@@ -45,23 +45,7 @@ const Article: NextPage<Props> = ({ data }) => {
                         <h3 className="text-2xl font-semibold sm:text-4xl group-focus:underline">{article.title}</h3>
                         {/* <span className="text-xs text-gray-400">28 Juillet, 2022</span> */}
                         <span className="text-xs text-gray-400">{article._firstPublishedAt}</span>
-                        {
-                            (article?.gallery?.length && article?.gallery?.length > 0) &&
-                            (
-                                <>
-                                    <h4 className="text-2xl font-semibold sm:text-4xl group-focus:underline">{galleryTitle}</h4>
-                                    {
-                                        // @ts-ignore
-                                        <ImageGallery items={article.gallery.map(_item => ({
-                                            original: _item.url,
-                                            originalAlt: _item.alt || 'Fenassco 2022 Gallery image',
-                                            thumbnailAlt: _item.responsiveImage.alt || 'Fenassco 2022 Gallery image',
-                                            thumbnail: _item.responsiveImage.src
-                                         }))} />
-                                    }
-                                </>
-                            )
-                        }
+
                         <StructuredText
                             data={article.body}
                             renderBlock={context => {
@@ -73,6 +57,28 @@ const Article: NextPage<Props> = ({ data }) => {
                             }}
                         />
 
+                    </div>
+
+                    <div className="container">
+                        {
+                            (article?.gallery?.length && article?.gallery?.length > 0) &&
+                            (
+                                <>
+                                    <h4 className="text-2xl font-semibold sm:text-4xl group-focus:underline">{galleryTitle}</h4>
+                                    {
+                                        <ImageGallery
+                                        // @ts-ignore
+                                            items={article.gallery.map(_item => ({
+                                                original: _item.url,
+                                                originalAlt: _item.alt || 'Mvomeka Fenassco 2022 Gallery image',
+                                                thumbnailAlt: _item.responsiveImage.alt || 'Mvomeka Fenassco 2022 Gallery image',
+                                                thumbnail: _item.responsiveImage.src
+                                            }))}
+                                        />
+                                    }
+                                </>
+                            )
+                        }
                     </div>
 
                 </div>
@@ -95,7 +101,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     });
     return {
         props: { data },
-        revalidate: 360
+        // revalidate: 1
     };
 }
 
