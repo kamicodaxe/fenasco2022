@@ -28,7 +28,8 @@ const Partners: React.FC<Props> = ({ locale }) => {
 
                 <div className="mx-auto text-center">
                     <div className="grid grid-cols-2 gap-4 mx-auto md:grid-cols-4 lg:grid-cols-5">
-                        <div className="row-span-2">
+                        {/* <div className="row-span-2"> */}
+                        <div className="">
                             <Image className="h-10 mx-auto lg:h-12" src={camtelLogo} width={128} alt="Camtel, sponsor officiel FENASCO 2022" />
                             <h3>Sponsor Officiel</h3>
                         </div>
@@ -56,11 +57,11 @@ const Partners: React.FC<Props> = ({ locale }) => {
                         <div>
                             <Image className="h-10 mx-auto lg:h-12" src={logo9} width={128} alt="Sponsor FENASCO 2022" />
                         </div>
-                        <div>
-                            <Image className="h-10 mx-auto lg:h-12" src={logo11} width={128} alt="Sponsor FENASCO 2022" />
+                        <div className="relative h-10">
+                            <Image className="mx-auto lg:h-12 object-contain" src={logo11} width={128} height={128} alt="Sponsor FENASCO 2022" />
                         </div>
-                        <div>
-                            <Image className="h-10 mx-auto lg:h-12" src={logo12} width={128} alt="Sponsor FENASCO 2022" />
+                        <div className="relative h-10">
+                            <Image className="mx-auto lg:h-12 object-contain" src={logo12} width={128} height={128} alt="Sponsor FENASCO 2022" />
                         </div>
                         
                     </div>
