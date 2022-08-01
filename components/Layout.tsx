@@ -47,7 +47,7 @@ const Layout: React.FC<Props> = ({ children, locale, title, desc }) => {
                 </main>
             </body>
 
-            <Footer />
+            <Footer locale={locale as string} />
         </div>
     )
 }

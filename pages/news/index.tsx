@@ -23,7 +23,7 @@ const News: NextPage<Props> = ({ data }) => {
         {
           data.allArticles.map(
             article => (
-              <Link key={article.id} rel="noopener noreferrer" href={`/news/${article.slug}`} title={`/news/${article.slug}`} >
+              <Link key={article.id} href={`/news/${article.slug}`} title={`/news/${article.slug}`} >
                 <span className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:cursor-pointer hover:no-underline focus:no-underline lg:grid lg:grid-cols-12">
                   <div className="w-full h-64 sm:h-96 lg:col-span-7">
                     <Image src={article.coverImage.url} width={720} height={420} className="object-cover bg-gray-400 rounded" alt={article.coverImage.alt} />
