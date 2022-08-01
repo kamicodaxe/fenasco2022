@@ -2,8 +2,9 @@ import type { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from '
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
+import dynamic from "next/dynamic";
 // @ts-ignore
-import ImageGallery from 'react-image-gallery';
+const ImageGallery = dynamic(import('react-image-gallery'));
 import Header from '../../components/Header'
 import Layout from '../../components/Layout'
 import { ARTICLES_QUERY, ARTICLE_QUERY, IArticle, IData, request } from '../../lib/datocms'
@@ -50,6 +51,7 @@ const Article: NextPage<Props> = ({ data }) => {
                                 <>
                                     <h4 className="text-2xl font-semibold sm:text-4xl group-focus:underline">{galleryTitle}</h4>
                                     {
+                                        // @ts-ignore
                                         <ImageGallery items={article.gallery.map(_item => ({
                                             original: _item.url,
                                             originalAlt: _item.alt || 'Fenassco 2022 Gallery image',
