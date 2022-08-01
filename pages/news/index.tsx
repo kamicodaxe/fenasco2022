@@ -15,7 +15,7 @@ const News: NextPage<Props> = ({ data }) => {
   const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
   const title = isFr ? "Actualité, FENASSCO 2022" : "News, FENASSCO 2022"
   const desc = isFr ? "Actualités des Jeux FENASSCO 2022" : "All news from FENASSCO GAMES"
-  useEffect(() => console.log(data), [])
+
   return (
     <Layout locale={locale as string} title={title} desc={desc}>
       <Header locale={locale as string} title="News" />

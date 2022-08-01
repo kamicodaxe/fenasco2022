@@ -28,8 +28,8 @@ const Article: NextPage<Props> = ({ data }) => {
     const galleryTitle = isFr ? "Galerie" : "Gallery"
 
     const renderItem = (src: string) => {
-        if (!src) return () => null
-        return () => <ReactPlayer controls url={src} />
+        const VideoView = () => <ReactPlayer controls url={src} />
+        return VideoView
     }
     return (
         <Layout locale={locale as string} title={title} desc={desc}>
@@ -72,7 +72,7 @@ const Article: NextPage<Props> = ({ data }) => {
                                     <h4 className="text-2xl font-semibold sm:text-4xl group-focus:underline">{galleryTitle}</h4>
                                     {
                                         <ImageGallery
-                                        // @ts-ignore
+                                            // @ts-ignore
                                             items={article.gallery.map(_item => ({
                                                 original: _item?.url,
                                                 originalAlt: _item?.alt || 'Mvomeka Fenassco 2022 Gallery image',

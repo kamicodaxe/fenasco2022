@@ -41,7 +41,7 @@ const Header: React.FC<Props> = ({ title, locale }) => {
                                     layout="fill"
                                     src={logoImage}
                                     className="object-contain"
-                                    alt="Logo - Taroungamograph by Tarounga Mbaye "
+                                    alt="Logo - LOGO FENASSCO GAMES 2022 "
                                 />
                             </div>
                         </div>
@@ -66,9 +66,9 @@ const Header: React.FC<Props> = ({ title, locale }) => {
             {/* <Image width={620} src={mvomeka} className="object-contain w-2/3" /> */}
 
             <section className="text-gray-800 flex">
-                <Image className="object-contain" width={320} src={girl} />
-                <Image width={620} src={mvomeka} className="object-contain w-2/3" />
-                <Image className="object-contain" width={320} src={boy} />
+                <Image className="object-contain" width={320} src={girl} alt="Girl" />
+                <Image width={620} src={mvomeka} className="object-contain w-2/3" alt="Logo" />
+                <Image className="object-contain" width={320} src={boy} alt="Boy" />
             </section>
 
         </header>

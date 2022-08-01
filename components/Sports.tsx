@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Sports: React.FC<Props> = ({ locale }) => {
-    const navigate = useCallback((sport: string) => () => router.push(`/results/${sport}`), [])
+    const navigate = useCallback((sport: string) => () => router.push(`/results/${sport}`), [router])
     const router = useRouter()
     const isFr = useMemo(() => locale.toLowerCase().includes('fr'), [locale])
     const title = isFr ? "12 Disciplines Sportives" : "12 Sports"

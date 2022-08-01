@@ -12,7 +12,7 @@ interface Props { }
 const Results: NextPage<Props> = () => {
     const router = useRouter()
     const { sport: sportName } = router.query
-    const navigate = useCallback((sport: string) => () => router.push(`/results/${sport}`), [])
+    const navigate = useCallback((sport: string) => () => router.push(`/results/${sport}`), [router])
     const { locale } = useRouter()
     const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
     const title = (isFr ? "Résultats " : "Results ") + sportName
