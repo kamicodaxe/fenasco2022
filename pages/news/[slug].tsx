@@ -50,7 +50,12 @@ const Article: NextPage<Props> = ({ data }) => {
                                 <>
                                     <h4 className="text-2xl font-semibold sm:text-4xl group-focus:underline">{galleryTitle}</h4>
                                     {
-                                        <ImageGallery items={article.gallery.map(_item => ({ original: _item.url, thumbnail: _item.responsiveImage.src }))} />
+                                        <ImageGallery items={article.gallery.map(_item => ({
+                                            original: _item.url,
+                                            originalAlt: _item.alt || 'Fenassco 2022 Gallery image',
+                                            thumbnailAlt: _item.responsiveImage.alt || 'Fenassco 2022 Gallery image',
+                                            thumbnail: _item.responsiveImage.src
+                                         }))} />
                                     }
                                 </>
                             )
