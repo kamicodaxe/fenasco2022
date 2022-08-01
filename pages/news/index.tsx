@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -20,7 +20,7 @@ const News: NextPage<Props> = ({ data }) => {
     <Layout locale={locale as string} title={title} desc={desc}>
       <Header locale={locale as string} title="News" />
       <section className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-        {/* {
+        {
           data.allArticles.map(
             article => (
               <Link key={article.id} rel="noopener noreferrer" href={`/news/${article.slug}`} title={`/news/${article.slug}`} >
@@ -39,16 +39,16 @@ const News: NextPage<Props> = ({ data }) => {
               </Link>
             )
           )
-        } */}
+        }
       </section>
     </Layout>
   )
 }
 
 
-export async function getStaticProps() {
-  const data = await request({
-    query: ARTICLES_QUERY,
+export const getStaticProps: GetStaticProps = async (context) => {
+  const data = await request<IData>({
+    query: ARTICLES_QUERY(context.locale as string),
     variables: { locale: 'fr' },
     includeDrafts: false,
     excludeInvalid: true

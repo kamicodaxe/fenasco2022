@@ -3,32 +3,45 @@ import { GraphQLClient } from "graphql-request";
 interface Props {
     query: string
     variables: {
-        locale: string
+        locale?: string
+        slug?: string
     }
     includeDrafts: boolean
     excludeInvalid: boolean
 }
 
 export interface IData {
-    allArticles: {
-        id: string
-        title: string
-        desc: string
-        slug: string
-        coverImage: {
-            id: string
-            url: string
-            alt: string
-        }
-        _status: string
-        _firstPublishedAt: string
-    }[]
+    allArticles: IArticle[]
     _allArticlesMeta: {
         count: number
     }
 }
 
-function request({ query, variables, includeDrafts, excludeInvalid }: Props) {
+export interface IArticle {
+    id: string
+    title: string
+    desc: string
+    slug: string
+    coverImage: {
+        id: string
+        url: string
+        alt: string
+    }
+    body: any
+    gallery?: {
+        alt: string
+        url: string
+        responsiveImage: {
+            alt: string
+            src: string
+            width: number
+        }
+    }[]
+    _status: string
+    _firstPublishedAt: string
+}
+
+async function request<Type>({ query, variables, includeDrafts, excludeInvalid }: Props) {
     const headers = {
         authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
     };
@@ -41,11 +54,14 @@ function request({ query, variables, includeDrafts, excludeInvalid }: Props) {
         headers['X-Exclude-Invalid'] = 'true';
     }
     const client = new GraphQLClient('https://graphql.datocms.com', { headers });
-    return client.request<IData>(query, variables);
+
+    const res = await client.request(query, variables)
+    return res as Type
 }
 
-const ARTICLES_QUERY = `query HomePage {
-    allArticles(locale: fr) {
+// ($locale: String)
+const ARTICLES_QUERY = (locale: string) => `query NewsPage {
+    allArticles(locale: ${locale}) {
         id
         title
         desc
@@ -64,8 +80,37 @@ const ARTICLES_QUERY = `query HomePage {
       }
   }`;
 
+const ARTICLE_QUERY = (locale: string, slug: string) => `query ArticlePage {
+    article(locale: ${locale}, filter: {slug: {eq: "${slug}"}}) {
+        id
+        slug
+        title
+        slug
+        coverImage {
+            id
+            url
+            alt
+        }
+        body {
+            value
+        }
+        gallery {
+            alt
+            url
+            responsiveImage(imgixParams: {fit: crop, w: "128", maxH: "128"}) {
+              alt
+              src
+              width
+            }
+          }
+        _status
+        _firstPublishedAt
+    }
+  }`;
+
 
 export {
     request,
-    ARTICLES_QUERY
+    ARTICLES_QUERY,
+    ARTICLE_QUERY
 }

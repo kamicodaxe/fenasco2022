@@ -19,7 +19,6 @@ const Header: React.FC<Props> = ({ title, locale }) => {
     const activeLink = (routeName: string) => {
         // TODO: Use classnames from npm
         const isActive = pathname.toLowerCase().includes(routeName.toLowerCase())
-        console.log(isActive)
         if (isActive) return 'flex text-2xl cursor-pointer link-active'
         return 'flex text-2xl hover:text-tertiary transition-colors cursor-pointer'
     }
