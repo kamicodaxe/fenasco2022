@@ -80,6 +80,16 @@ const ARTICLES_QUERY = (locale: string) => `query NewsPage {
       }
   }`;
 
+async function getAllArticles<Type>(locale: string) {
+    const data = await request<Type>({
+        query: ARTICLES_QUERY(locale),
+        variables: {},
+        includeDrafts: false,
+        excludeInvalid: true
+    });
+    return data
+}
+
 const ARTICLE_QUERY = (locale: string, slug: string) => `query ArticlePage {
     article(locale: ${locale}, filter: {slug: {eq: "${slug}"}}) {
         id
@@ -108,9 +118,80 @@ const ARTICLE_QUERY = (locale: string, slug: string) => `query ArticlePage {
     }
   }`;
 
+const SPORT_QUERY = (locale: string, slug: string) => `query ArticlePage {
+    sport(locale: ${locale}, filter: {slug: {eq: "${slug}"}}) {
+        name
+        slug
+        logo {
+            alt
+            url
+        }
+        results {
+            id
+            loser
+            winner
+        }
+    }
+  }`;
+
+async function getSportDetail<Type>(locale: string, slug: string) {
+    const data = await request<Type>({
+        query: SPORT_QUERY(locale, slug),
+        variables: {},
+        includeDrafts: false,
+        excludeInvalid: true
+    });
+    return data
+}
+
+const SPORTS_QUERY = (locale: string) => `query SportsQuery {
+    allSports(locale: ${locale}) {
+          id
+          name
+          slug
+        logo {
+          url
+        }
+      }
+  }`;
+
+async function getAllSports<Type>(locale: string) {
+    const data = await request<Type>({
+        query: SPORTS_QUERY(locale),
+        variables: {},
+        includeDrafts: false,
+        excludeInvalid: true
+    });
+    return data
+}
+
+
+const RESULTS_QUERY = (id: string) => `query ResultsQuery {
+    allResults(filter: {sport: {eq: ${id}}}) {
+        id
+        winner
+        loser
+      }
+  }`;
+
+async function getResultsForId<Type>(sportId: string) {
+    const data = await request<Type>({
+        query: RESULTS_QUERY(sportId),
+        variables: {
+            locale: 'fr'
+        },
+        includeDrafts: false,
+        excludeInvalid: true
+    });
+    return data
+}
 
 export {
     request,
+    getAllArticles,
+    getResultsForId,
+    getSportDetail,
+    getAllSports,
     ARTICLES_QUERY,
     ARTICLE_QUERY
 }

@@ -9,6 +9,8 @@ import logo7 from '../assets/images/logo-7.svg'
 import logo8 from '../assets/images/logo-8.svg'
 import logo9 from '../assets/images/logo-9.svg'
 import logo10 from '../assets/images/logo-10.svg'
+import logo11 from '../assets/images/logo-11.jpg'
+import logo12 from '../assets/images/logo-12.jpg'
 import { useMemo } from "react"
 
 interface Props {
@@ -26,8 +28,12 @@ const Partners: React.FC<Props> = ({ locale }) => {
 
                 <div className="mx-auto text-center">
                     <div className="grid grid-cols-2 gap-4 mx-auto md:grid-cols-4 lg:grid-cols-5">
-                        <div>
+                        <div className="row-span-2">
                             <Image className="h-10 mx-auto lg:h-12" src={camtelLogo} width={128} alt="Camtel, sponsor officiel FENASCO 2022" />
+                            <h3>Sponsor Officiel</h3>
+                        </div>
+                        <div>
+                            <Image className="h-10 mx-auto lg:h-12" src={logo10} width={128} alt="Sponsor FENASCO 2022" />
                         </div>
                         <div>
                             <Image className="h-10 mx-auto lg:h-12" src={logo1} width={128} alt="Sponsor FENASCO 2022" />
@@ -51,8 +57,12 @@ const Partners: React.FC<Props> = ({ locale }) => {
                             <Image className="h-10 mx-auto lg:h-12" src={logo9} width={128} alt="Sponsor FENASCO 2022" />
                         </div>
                         <div>
-                            <Image className="h-10 mx-auto lg:h-12" src={logo10} width={128} alt="Sponsor FENASCO 2022" />
+                            <Image className="h-10 mx-auto lg:h-12" src={logo11} width={128} alt="Sponsor FENASCO 2022" />
                         </div>
+                        <div>
+                            <Image className="h-10 mx-auto lg:h-12" src={logo12} width={128} alt="Sponsor FENASCO 2022" />
+                        </div>
+                        
                     </div>
                 </div>
             </div>

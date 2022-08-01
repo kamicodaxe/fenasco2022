@@ -21,23 +21,30 @@ const Magazine: React.FC<Props> = ({ locale }) => {
                         <p className="text-gray-600 text-md">
                             {
                                 isFr ?
-                                    `Every year, Cameroonian school youths are given the opportunity to express
-                                    themselves through sports in the FENASSCO League “A” Games. After a twoyear hiatus owing to the global Coronavirus pandemic, we are delighted to
-                                    resume FENASSCO League “A” Games, with a subtle dose of innovations. The
-                                    theme of the 22nd Edition of the Games, “School Games for Peace and
-                                    Unity in Diversity” urges us to move from monotony to variety, both in the
-                                    form and content of the Games. The choice of Mvomeka’a as the host town
-                                    this year therefore sets the pace, since major cities have been enjoying this
-                                    prestige over the years.`
+                                    `Les jeux FENASSCO Ligue « A » offrent à la jeunesse scolaire 
+                                    camerounaise, l’opportunité de s’exprimer à travers le sport. 
+                                    Après deux années d’interruption en raison de la pandémie 
+                                    mondiale du Coronavirus, nous sommes heureux de renouer 
+                                    avec la tradition des jeux FENASSCO Ligue « A », avec en prime, 
+                                    une fine touche d’innovations. Le thème de la 22ème édition 
+                                    des jeux FENASSCO Ligue « A » « Le sport scolaire pour la 
+                                    paix et l’unité dans la diversité » nous invite à renoncer à 
+                                    la monotonie pour embrasser la diversité, tant sur la forme que 
+                                    dans le contenu des Jeux. Le choix de Mvomeka’a comme ville 
+                                    hôte des jeux vient rompre avec une certaine routine, qui au fil 
+                                    des années a fait de l’organisation des finales nationales des jeux 
+                                    FENASSCO Ligue « A », la chasse gardée des grandes métropoles.`
                                     :
-                                    `Every year, Cameroonian school youths are given the opportunity to express
-                                themselves through sports in the FENASSCO League “A” Games. After a twoyear hiatus owing to the global Coronavirus pandemic, we are delighted to
-                                resume FENASSCO League “A” Games, with a subtle dose of innovations. The
-                                theme of the 22nd Edition of the Games, “School Games for Peace and
-                                Unity in Diversity” urges us to move from monotony to variety, both in the
-                                form and content of the Games. The choice of Mvomeka’a as the host town
-                                this year therefore sets the pace, since major cities have been enjoying this
-                                prestige over the years.`
+                                    `Every year, Cameroonian school youths are given the opportunity 
+                                    to express themselves through sports in the FENASSCO 
+                                    League “A” Games. After a two-year hiatus owing to the global 
+                                    Coronavirus pandemic, we are delighted to resume FENASSCO 
+                                    League “A” Games, with a subtle dose of innovations. The theme 
+                                    of the 22nd Edition of the Games, “School Games for Peace 
+                                    and Unity in Diversity” urges us to move from monotony to 
+                                    variety, both in the form and content of the Games. The choice 
+                                    of Mvomeka’a as the host town this year therefore sets the pace, 
+                                    since major cities have been enjoying this prestige over the years.`
                             }
 
 

@@ -16,7 +16,7 @@ const Results: NextPage = ({ }) => {
 
   return (
     <Layout locale={locale as string} title={title} desc={desc}>
-      <Header locale={locale as string} title={isFr ? "Résultats" : "News"} />
+      <Header locale={locale as string} title={title} />
       <div className="flex">
         <div className="flex flex-col w-16 md:w-72 max-h-screen bg-white border-r">
           <div className="flex flex-col justify-between">

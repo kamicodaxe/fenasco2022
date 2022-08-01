@@ -17,11 +17,11 @@ const Home: NextPage = () => {
   return (
     <Layout locale={locale as string} title={title} desc={desc}>
       <HomeHeader locale={locale as string} active="home" />
+      <Magazine locale={locale as string} />
       <Presentation locale={locale as string} />
       <Statistics locale={locale as string} />
       <Sports locale={locale as string} />
       <Covid19 />
-      <Magazine locale={locale as string} />
       <Partners locale={locale as string} />
     </Layout>
   )

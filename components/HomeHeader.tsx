@@ -25,7 +25,7 @@ const HomeHeader: React.FC<Props> = ({ active, locale }) => {
     const isFrench = useMemo(() => locale.toLowerCase().includes('fr'), [locale])
 
     return (
-        <header className="h-screen flex flex-col justify-between bg-[url('/images/background.png')] bg-cover">
+        <header className="flex flex-col justify-between bg-[url('/images/background.png')] bg-cover">
             <nav className="p-4 text-gray-800">
                 <div className="container flex justify-around md:justify-center align-start mx-auto">
                     <span className={activeLink('info')} >
@@ -59,10 +59,10 @@ const HomeHeader: React.FC<Props> = ({ active, locale }) => {
             </nav>
 
             <div className="container mx-auto flex flex-col items-center px-4 text-center md:px-10 lg:px-12 xl:max-w-3xl">
-                <span className="text-5xl md:text-4xl pb-4 font-bold text-tertiary uppercase">
+                <span className="text-5xl 2xl:text-6xl pb-4 font-bold text-tertiary uppercase">
                     {isFrench ? 'Bienvenue,' : 'Welcome,'}
                 </span>
-                <h1 className="text-5xl md:text-4xl font-bold leading-none uppercase">
+                <h1 className="text-5xl md:text-4xl 2xl:text-5xl font-bold leading-none uppercase">
                     22<sup>{isFrench ? 'éme' : 'nd'}</sup>
                     {
                         isFrench ?
@@ -72,10 +72,10 @@ const HomeHeader: React.FC<Props> = ({ active, locale }) => {
                 </h1>
             </div>
 
-            <section className="text-gray-800 flex">
-                <Image className="object-contain" width={320} src={girl} alt="Girl competitor" />
-                <Image width={620} src={mvomeka} className="object-contain w-2/3" alt="Olympics FENASCO 2022" />
-                <Image className="object-contain" width={320} src={boy} alt="Boy competitor" />
+            <section className="text-gray-800 flex justify-around">
+                <Image className="object-contain" width={256} src={girl} alt="Girl competitor" />
+                <Image width={420} src={mvomeka} className="object-contain w-2/3" alt="Olympics FENASCO 2022" />
+                <Image className="object-contain" width={256} src={boy} alt="Boy competitor" />
             </section>
 
         </header>

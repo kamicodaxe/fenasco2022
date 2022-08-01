@@ -15,12 +15,13 @@ const Results: NextPage<Props> = () => {
     const navigate = useCallback((sport: string) => () => router.push(`/results/${sport}`), [router])
     const { locale } = useRouter()
     const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
-    const title = (isFr ? "Résultats " : "Results ") + sportName
+    const pageTitle = isFr ? "Résultats des Jeuxs" : "Games Results"
+    const title = (isFr ? "Résultats " : "Results ")
     const desc = sportName + (isFr ? "Résultats de Match FENASSCO 2022" : "Match results FENASSCO 2022")
 
     return (
         <Layout locale={locale as string} title={title} desc={desc}>
-            <Header locale={locale as string} title="Results" />
+            <Header locale={locale as string} title={pageTitle} subtitle={sportName as string} />
             <div className="flex">
                 <div className="flex flex-col w-16 md:w-72 max-h-screen bg-white border-r">
                     <div className="flex flex-col justify-between">

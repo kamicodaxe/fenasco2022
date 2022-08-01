@@ -10,9 +10,10 @@ import { useRouter } from "next/router"
 interface Props {
     title: string
     locale: string
+    subtitle?: string
 }
 
-const Header: React.FC<Props> = ({ title, locale }) => {
+const Header: React.FC<Props> = ({ title, subtitle, locale }) => {
     const { pathname } = useRouter()
     const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
 
@@ -25,6 +26,7 @@ const Header: React.FC<Props> = ({ title, locale }) => {
 
     return (
         <header className="flex flex-col justify-between bg-[url('/images/background.png')] bg-cover">
+
             <nav className="p-4 text-gray-800">
                 <div className="container flex justify-around md:justify-center align-start mx-auto">
                     <span className={activeLink('results')} >
@@ -57,18 +59,23 @@ const Header: React.FC<Props> = ({ title, locale }) => {
 
             </nav>
 
-            {/* <div className="container mx-auto flex flex-col items-center px-4 text-center md:translate-y-12 md:px-10 lg:px-12 xl:max-w-3xl">
-                <h1 className="text-2xl text-tertiary md:text-4xl font-bold leading-none uppercase">
-                    {title}
-                </h1>
-            </div> */}
-
-            {/* <Image width={620} src={mvomeka} className="object-contain w-2/3" /> */}
-
-            <section className="text-gray-800 flex">
-                <Image className="object-contain" width={320} src={girl} alt="Girl" />
-                <Image width={620} src={mvomeka} className="object-contain w-2/3" alt="Logo" />
-                <Image className="object-contain" width={320} src={boy} alt="Boy" />
+            <section className="text-gray-800 flex justify-around items-center">
+                <Image className="object-contain" width={128} height={172} src={girl} alt="Girl" />
+                <span className="text-center">
+                    <h1 className="text-2xl text-tertiary md:text-4xl font-bold leading-none uppercase">
+                        {title}
+                    </h1>
+                    {
+                        subtitle &&
+                        (
+                            <h2 className="text-xl text-black md:text-2xl font-bold leading-none uppercase">
+                                {subtitle}
+                            </h2>
+                        )
+                    }
+                    {/* <Image height={64} src={mvomeka} className="object-contain w-1/2" alt="Logo" /> */}
+                </span>
+                <Image className="object-contain" width={128} height={172} src={boy} alt="Boy" />
             </section>
 
         </header>
