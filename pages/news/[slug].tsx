@@ -11,6 +11,7 @@ import Layout from '../../components/Layout'
 import { ARTICLES_QUERY, ARTICLE_QUERY, IArticle, IData, request } from '../../lib/datocms'
 
 import "react-image-gallery/styles/css/image-gallery.css";
+import ReactPlayer from 'react-player'
 
 interface Props {
     data: {
@@ -26,6 +27,10 @@ const Article: NextPage<Props> = ({ data }) => {
     const desc = article.desc
     const galleryTitle = isFr ? "Galerie" : "Gallery"
 
+    const renderItem = (src: string) => {
+        if (!src) return () => null
+        return () => <ReactPlayer controls url={src} />
+    }
     return (
         <Layout locale={locale as string} title={title} desc={desc}>
             <Header locale={locale as string} title="News - Article" />
@@ -72,7 +77,8 @@ const Article: NextPage<Props> = ({ data }) => {
                                                 original: _item?.url,
                                                 originalAlt: _item?.alt || 'Mvomeka Fenassco 2022 Gallery image',
                                                 thumbnailAlt: _item.responsiveImage?.alt || 'Mvomeka Fenassco 2022 Gallery image',
-                                                thumbnail: _item.responsiveImage?.src || ''
+                                                thumbnail: _item.responsiveImage?.src || '',
+                                                renderItem: _item.responsiveImage?.src ? null : renderItem(_item?.url)
                                             }))}
                                         />
                                     }
