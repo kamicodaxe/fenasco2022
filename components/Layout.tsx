@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Script from 'next/script'
 import { useMemo } from 'react'
 import Footer from "./Footer"
 
@@ -17,7 +18,7 @@ const Layout: React.FC<Props> = ({ children, locale, title, desc }) => {
     const isFr = useMemo(() => locale.toLowerCase().includes('fr'), [locale])
     const lang = isFr ? 'fr_FR' : 'en_US'
     const siteName = isFr ? "JEUX FENASSCO 2022" : "FENASSCO GAMES 2022"
-    
+
     return (
         <div>
             <Head>
@@ -48,6 +49,25 @@ const Layout: React.FC<Props> = ({ children, locale, title, desc }) => {
             </body>
 
             <Footer locale={locale as string} />
+
+            <Script
+                strategy="afterInteractive"
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+            />
+            <Script
+                id="gtag-init"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: `
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                        page_path: window.location.pathname,
+                        });
+                    `,
+                }}
+            />
         </div>
     )
 }
