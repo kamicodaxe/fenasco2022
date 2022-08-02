@@ -15,9 +15,9 @@ const Results: NextPage<Props> = () => {
     const navigate = useCallback((sport: string) => () => router.push(`/results/${sport}`), [router])
     const { locale } = useRouter()
     const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
-    const pageTitle = isFr ? "Résultats des Jeuxs" : "Games Results"
+    const pageTitle = isFr ? "Résultats des Jeux" : "Games Results"
     const title = (isFr ? "Résultats " : "Results ")
-    const desc = sportName + (isFr ? "Résultats de Match FENASSCO 2022" : "Match results FENASSCO 2022")
+    const desc = sportName + (isFr ? "Résultats des Matchs FENASSCO 2022" : "Match results FENASSCO 2022")
 
     return (
         <Layout locale={locale as string} title={title} desc={desc}>
