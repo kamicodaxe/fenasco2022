@@ -11,17 +11,17 @@ interface Props { }
 
 const Results: NextPage<Props> = () => {
     const router = useRouter()
-    const { sport: sportName } = router.query
+    const { sport: slug } = router.query
     const navigate = useCallback((sport: string) => () => router.push(`/results/${sport}`), [router])
     const { locale } = useRouter()
     const isFr = useMemo(() => (locale || '').toLowerCase().includes('fr'), [locale])
     const pageTitle = isFr ? "Résultats des Jeuxs" : "Games Results"
     const title = (isFr ? "Résultats " : "Results ")
-    const desc = sportName + (isFr ? "Résultats de Match FENASSCO 2022" : "Match results FENASSCO 2022")
+    const desc = slug + (isFr ? "Résultats de Match FENASSCO 2022" : "Match results FENASSCO 2022")
 
     return (
         <Layout locale={locale as string} title={title} desc={desc}>
-            <Header locale={locale as string} title={pageTitle} subtitle={sportName as string} />
+            <Header locale={locale as string} title={pageTitle} subtitle={slug as string} />
             <div className="flex">
                 <div className="flex flex-col w-16 md:w-72 max-h-screen bg-white border-r">
                     <div className="flex flex-col justify-between">
@@ -33,7 +33,7 @@ const Results: NextPage<Props> = () => {
                                         onClick={navigate(_sport.name)}
                                         className={classNames(
                                             ["flex items-center p-2 md:px-4 md:py-[0.9rem] w-full bg-[#0B0D4A] text-gray-200"],
-                                            _sport.name === sportName && ['bg-[#1c1d49]']
+                                            _sport.name === slug && ['bg-[#1c1d49]']
                                         )}
                                     >
                                         <span className="w-8 h-8 md:w-6 md:h-6 relative">

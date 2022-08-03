@@ -1,14 +1,17 @@
 import Image from "next/image"
 import Link from "next/link"
+import { GetStaticProps } from "next/types"
 import { useMemo } from "react"
 import logoImage from '../assets/images/logo.png'
 import { sports } from "../lib/data"
+import { ARTICLES_QUERY, IData, request } from "../lib/datocms"
 
 interface Props {
     locale: string
+    data?: IData
 }
 
-const Footer: React.FC<Props> = ({ locale }) => {
+const Footer: React.FC<Props> = ({ locale, data }) => {
     const isFr = useMemo(() => locale.toLowerCase().includes('fr'), [locale])
 
     return (
@@ -35,7 +38,7 @@ const Footer: React.FC<Props> = ({ locale }) => {
                                     sports.map(
                                         sport => (
                                             <li key={sport.name} className="text-base font-normal cursor-pointer hover:text-tertiary">
-                                                <Link href={`/results/${sport.name}`}>
+                                                <Link href={`/results/${sport.slug}`}>
                                                     <span>{isFr ? sport.name : sport.en}</span>
                                                 </Link>
                                             </li>
@@ -48,9 +51,13 @@ const Footer: React.FC<Props> = ({ locale }) => {
                         <div className="mt-12 md:mt-0">
                             <h3 className="text-sm font-bold tracking-wider text-tertiary uppercase"> {isFr ? "Actualités" : "News"} </h3>
                             <ul role="list" className="mt-4 space-y-2">
-                                {/* <li>
-                                    <a href="#www.wickedblocks.dev" className="text-base font-normal hover:text-tertiary"> vide </a>
-                                </li> */}
+                                {
+                                    data?.allArticles.map(article => (
+                                        <li>
+                                            <link href={`/news/${article.slug}`} className="text-base font-normal hover:text-tertiary"> {article.title} </link>
+                                        </li>
+                                    ))
+                                }
                             </ul>
                         </div>
 
@@ -88,5 +95,16 @@ const Footer: React.FC<Props> = ({ locale }) => {
     )
 }
 
+export const getStaticProps: GetStaticProps = async (context) => {
+    const data = await request<IData>({
+        query: ARTICLES_QUERY(context.locale as string),
+        variables: { locale: 'fr' },
+        includeDrafts: false,
+        excludeInvalid: true
+    });
+    return {
+        props: { data }
+    };
+}
 
 export default Footer

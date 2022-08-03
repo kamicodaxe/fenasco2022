@@ -16,61 +16,73 @@ const sports = [
     {
         name: "Athlétisme",
         en: "Athletics",
+        slug: "athletics",
         image: athlete
     },
     {
         name: "Basketball",
         en: "Basketball",
+        slug: "basketball",
         image: basketball
     },
     {
         name: "Football",
         en: "Football",
+        slug: "slug",
         image: football
     },
     {
         name: "Gymnastique",
         en: "Gymnastics",
+        slug: "gymnastics",
         image: gymnast
     },
     {
         name: "Handball",
         en: "Handball",
+        slug: "handball",
         image: handball
     },
     {
         name: "Judo",
         en: "Judo",
+        slug: "judo",
         image: judo
     },
     {
         name: "Luttes",
         en: "Wrestling",
+        slug: "wrestling",
         image: wrestling
     },
     {
         name: "Tennis de table",
         en: "Table Tennis",
+        slug: "table-tenis",
         image: tableTenis
     },
     {
         name: "Sports paralympiques",
         en: "Paralympic sports",
+        slug: "paralympic-sports",
         image: olympics
     },
     {
         name: "Volleyball",
         en: "Volleyball",
+        slug: "volleyball",
         image: volleyball
     },
     {
         name: "Badminton",
         en: "Badminton",
+        slug: "badminton",
         image: badminton
     },
     {
         name: "Bras de fer",
         en: "Arm wrestling",
+        slug: "arm-wrestling",
         image: weightlifting
     },
 ]
