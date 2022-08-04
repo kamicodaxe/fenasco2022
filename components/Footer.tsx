@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { GetStaticProps } from "next/types"
-import { useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import logoImage from '../assets/images/logo.png'
 import { sports } from "../lib/data"
 import { ARTICLES_QUERY, IData, request } from "../lib/datocms"
@@ -11,8 +11,25 @@ interface Props {
     data?: IData
 }
 
-const Footer: React.FC<Props> = ({ locale, data }) => {
+const Footer: React.FC<Props> = ({ locale }) => {
     const isFr = useMemo(() => locale.toLowerCase().includes('fr'), [locale])
+    const [data, setData] = useState<null | IData>(null)
+    
+
+    useEffect(() => {
+        request<IData>({
+            query: ARTICLES_QUERY(locale as string),
+            variables: { locale },
+            includeDrafts: false,
+            excludeInvalid: true
+        })
+        .then(_data => {
+            console.log(_data)
+            if (_data) {
+                setData(_data)
+            }
+        } ).catch(console.warn)
+    }, [])
 
     return (
         <footer className="bg-[url('/images/background.png')] bg-cover text-gray-800 relative overflow-hidden" aria-labelledby="footer-heading">
@@ -53,7 +70,7 @@ const Footer: React.FC<Props> = ({ locale, data }) => {
                             <ul role="list" className="mt-4 space-y-2">
                                 {
                                     data?.allArticles.map(article => (
-                                        <li>
+                                        <li key={article.slug}>
                                             <link href={`/news/${article.slug}`} className="text-base font-normal hover:text-tertiary"> {article.title} </link>
                                         </li>
                                     ))
