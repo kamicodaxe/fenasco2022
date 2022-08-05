@@ -53,15 +53,13 @@ const Footer: React.FC<Props> = ({ locale }) => {
                             <h3 className="text-sm font-bold tracking-wider text-tertiary uppercase">{isFr ? "Résultats" : "Results"}</h3>
                             <ul role="list" className="mt-4 space-y-2">
                                 {
-                                    sports.map(
-                                        sport => (
-                                            <li key={sport.name} className="text-base font-normal cursor-pointer hover:text-tertiary">
-                                                <Link href={`/results/${sport.slug}`}>
-                                                    <span>{isFr ? sport.name : sport.en}</span>
-                                                </Link>
-                                            </li>
-                                        )
-                                    )
+                                    sports.map(sport => (
+                                        <li key={sport.name} className="text-base font-normal cursor-pointer hover:text-tertiary">
+                                            <Link href={`/results/${sport.slug}`}>
+                                                <span>{isFr ? sport.name : sport.en}</span>
+                                            </Link>
+                                        </li>
+                                    ))
                                 }
                             </ul>
                         </div>
