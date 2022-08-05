@@ -118,6 +118,21 @@ const ARTICLE_QUERY = (locale: string, slug: string) => `query ArticlePage {
     }
   }`;
 
+  const ARTICLE_QUERY_BY_ID = (locale: string, id: string) => `query ArticlePage {
+    article(locale: ${locale}, filter: {id: {eq: "${id}"}}) {
+        slug
+        title
+        desc
+        coverImage {
+            id
+            url
+            alt
+        }
+        _status
+        _firstPublishedAt
+    }
+  }`;
+
 const SPORT_QUERY = (locale: string, slug: string) => `query ArticlePage {
     sport(locale: ${locale}, filter: {slug: {eq: "${slug}"}}) {
         name
@@ -193,5 +208,6 @@ export {
     getSportDetail,
     getAllSports,
     ARTICLES_QUERY,
-    ARTICLE_QUERY
+    ARTICLE_QUERY,
+    ARTICLE_QUERY_BY_ID
 }
