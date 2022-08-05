@@ -5,16 +5,17 @@ import { useEffect, useMemo, useState } from "react"
 import logoImage from '../assets/images/logo.png'
 import { sports } from "../lib/data"
 import { ARTICLES_QUERY, IData, request } from "../lib/datocms"
+import articles from '../data/articles.json'
 
 interface Props {
-    locale: string
+    locale: 'en' | 'fr'
     data?: IData
 }
 
 const Footer: React.FC<Props> = ({ locale }) => {
     const isFr = useMemo(() => locale.toLowerCase().includes('fr'), [locale])
     const [data, setData] = useState<null | IData>(null)
-    
+
 
     useEffect(() => {
         request<IData>({
@@ -23,12 +24,12 @@ const Footer: React.FC<Props> = ({ locale }) => {
             includeDrafts: false,
             excludeInvalid: true
         })
-        .then(_data => {
-            console.log(_data)
-            if (_data) {
-                setData(_data)
-            }
-        } ).catch(console.warn)
+            .then(_data => {
+                console.log(_data)
+                if (_data) {
+                    setData(_data)
+                }
+            }).catch(console.warn)
     }, [])
 
     return (
@@ -69,9 +70,12 @@ const Footer: React.FC<Props> = ({ locale }) => {
                             <h3 className="text-sm font-bold tracking-wider text-tertiary uppercase"> {isFr ? "Actualités" : "News"} </h3>
                             <ul role="list" className="mt-4 space-y-2">
                                 {
-                                    data?.allArticles.map(article => (
-                                        <li key={article.slug}>
-                                            <link href={`/news/${article.slug}`} className="text-base font-normal hover:text-tertiary"> {article.title} </link>
+                                    articles[locale].allArticles.map(article => (
+                                        <li key={article.slug} className="text-base font-normal cursor-pointer hover:text-tertiary">
+                                            {/* {article.title} */}
+                                            <Link href={`/news/${article.slug}`}>
+                                                <span>{article.title}</span>
+                                            </Link>
                                         </li>
                                     ))
                                 }
