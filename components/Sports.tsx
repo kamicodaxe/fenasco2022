@@ -30,7 +30,7 @@ const Sports: React.FC<Props> = ({ locale }) => {
                             </div>
                             <div className="p-2 pb-4 text-center">
                                 <h3 className="text-2xl font-bold text-gray-800 mb-2">{isFr ? _sport.name : _sport.en}</h3>
-                                <button onClick={navigate(_sport.name)} className="text-tertiary text-md hover:underline">
+                                <button onClick={navigate(_sport.slug)} className="text-tertiary text-md hover:underline">
                                     {isFr ? "Résultats" : "Results"}
                                 </button>
                             </div>
