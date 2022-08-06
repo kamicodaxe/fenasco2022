@@ -27,13 +27,13 @@ const Layout: React.FC<Props> = ({ children, locale, title, desc }) => {
                 <link rel="icon" href="/favicon.ico" />
                 <meta name="description" content={desc} />
                 <meta name="robots" content="max-image-preview:large" />
-                <link rel="canonical" href="http://www.fenassco.com/" />
+                {/* <link rel="canonical" href="http://www.fenassco.com/" /> */}
                 <meta property="og:locale" content={lang} />
                 <meta property="og:site_name" content={siteName} />
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={desc} />
-                <meta property="og:url" content="http://fenassco.com/" />
+                {/* <meta property="og:url" content="http://fenassco.com/" /> */}
                 <meta property="og:image" content="/favicon.ico" />
                 <meta property="og:image:secure_url" content="/favicon.ico" />
                 <meta name="twitter:card" content="summary" />

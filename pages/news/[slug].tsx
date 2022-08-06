@@ -42,7 +42,7 @@ const Article: NextPage<Props> = ({ data }) => {
                         <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group lg:grid lg:grid-cols-12">
                             <div className="w-full h-64 sm:h-96 lg:col-span-12">
                                 {/* <Image src="https://source.unsplash.com/random/1280x720" width={720} height={420} className="object-cover bg-gray-400 rounded" alt='Blog post image' /> */}
-                                <Image src={article.coverImage.url} width={720} height={420} className="object-contain bg-gray-400 rounded" alt={article.coverImage.alt} />
+                                <Image src={article.coverImage.url} width={720} height={420} className="object-contain bg-[url('/images/background.png')] bg-cover rounded" alt={article.coverImage.alt} />
                             </div>
                         </div>
                     )

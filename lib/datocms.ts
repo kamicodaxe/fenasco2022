@@ -68,6 +68,7 @@ const ARTICLES_QUERY = (locale: string) => `query NewsPage {
         title
         desc
         slug
+        author
         coverImage {
             id
             url
@@ -98,6 +99,7 @@ const ARTICLE_QUERY = (locale: string, slug: string) => `query ArticlePage {
         slug
         title
         slug
+        author
         coverImage {
             id
             url
@@ -125,6 +127,7 @@ const ARTICLE_QUERY = (locale: string, slug: string) => `query ArticlePage {
         slug
         title
         desc
+        author
         coverImage {
             id
             url
