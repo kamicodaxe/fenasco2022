@@ -30,7 +30,7 @@ const NewsLetter: React.FC<Props> = ({ locale }) => {
                             <div className="p-2 pb-4 text-center">
                                 <h3 className="text-2xl font-bold text-gray-800 mb-2">{isFr ? _item.name : _item.en}</h3>
                                 <button className="p-4 mx-auto mt-4 rounded-lg bg-tertiary text-white text-2xl">
-                                    <a href="/assets/fenassco_magazine.pdf" target='_blank'>{isFr ? 'Télécharger' : 'Download'}</a>
+                                    <a href={_item.dl} target='_blank'>{isFr ? 'Télécharger' : 'Download'}</a>
                                 </button>
                             </div>
                         </div>
