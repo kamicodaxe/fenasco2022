@@ -72,8 +72,21 @@ const Results: NextPage<Props> = () => {
 
     }, [selectedTab, results])
 
-    console.log(columns)
+    function getCategory(name: string) {
+        switch (name) {
+            case "girls": return isFr ? "Junior Dames" : "Young School Girls"
+                break;
+            case "boys": return isFr ? "Junior Messieurs" : "Young School Boys"
+                break;
+            case "egirls": return isFr ? "ENIEG - ENIET Dames" : "ENIEG - ENIET Girls"
+                break;
+            case "eboys": return isFr ? "ENIEG - ENIET Messieurs" : "ENIEG - ENIET Boys"
+                break;
 
+            default: return ''
+                break;
+        }
+    }
 
     return (
         <Layout locale={locale as string} title={title} desc={desc}>
@@ -116,7 +129,7 @@ const Results: NextPage<Props> = () => {
                                         ["text-md capitalize self-stretch"],
                                         selectedTab === _game && ["border-b-4 border-tertiary"]
                                     )
-                                } onClick={() => setSelected(_game)}>{_game}</button>
+                                } onClick={() => setSelected(_game)}>{getCategory(_game)}</button>
                             )
                         }
                     </div>

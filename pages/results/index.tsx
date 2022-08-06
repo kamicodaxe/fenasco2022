@@ -25,7 +25,7 @@ const Results: NextPage = ({ }) => {
                 sports.map(_sport => (
                   <button
                     key={_sport.name}
-                    onClick={navigate(_sport.name)}
+                    onClick={navigate(_sport.slug)}
                     className={classNames(
                       ["flex items-center p-2 md:px-4 md:py-[0.9rem] w-full bg-[#0B0D4A] text-gray-200"]
                     )}
