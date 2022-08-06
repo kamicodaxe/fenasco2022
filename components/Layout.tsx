@@ -48,6 +48,7 @@ const Layout: React.FC<Props> = ({ children, locale, title, desc }) => {
                 </main>
             </body>
 
+            {/* @ts-ignore */}
             <Footer locale={locale as string} />
 
             <Script
