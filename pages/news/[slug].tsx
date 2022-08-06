@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import type { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from 'next'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { StructuredText } from 'react-datocms'
@@ -32,25 +32,36 @@ const Article: NextPage<Props> = ({ data }) => {
         const VideoView = () => <ReactPlayer controls url={src} />
         return VideoView
     }
+
     return (
         <Layout locale={locale as string} title={title} desc={desc}>
             <Header locale={locale as string} title={pageTitle} subtitle={title} />
             <section className="container flex flex-col items-center max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
-
-                <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group lg:grid lg:grid-cols-12">
-                    <div className="w-full h-64 sm:h-96 lg:col-span-12">
-                        {/* <Image src="https://source.unsplash.com/random/1280x720" width={720} height={420} className="object-cover bg-gray-400 rounded" alt='Blog post image' /> */}
-                        <Image src={article.coverImage.url} width={720} height={420} className="object-contain bg-gray-400 rounded" alt={article.coverImage.alt} />
-                    </div>
-                </div>
+                {
+                    article.coverImage && (
+                        <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group lg:grid lg:grid-cols-12">
+                            <div className="w-full h-64 sm:h-96 lg:col-span-12">
+                                {/* <Image src="https://source.unsplash.com/random/1280x720" width={720} height={420} className="object-cover bg-gray-400 rounded" alt='Blog post image' /> */}
+                                <Image src={article.coverImage.url} width={720} height={420} className="object-contain bg-gray-400 rounded" alt={article.coverImage.alt} />
+                            </div>
+                        </div>
+                    )
+                }
 
                 {/* Content */}
                 <div className="block max-w-sm  mx-auto sm:max-w-2xl group text-gray-800 font-sans text-lg">
 
                     <div className="space-y-4 text-justify">
                         <h3 className="text-2xl font-semibold sm:text-4xl group-focus:underline">{article.title}</h3>
-                        {/* <span className="text-xs text-gray-400">28 Juillet, 2022</span> */}
-                        <span className="text-xs text-gray-400">{article._firstPublishedAt}</span>
+                        {
+                            article.author && (
+                                <>
+                                    <span className="text-xs text-gray-400">{isFr ? "Par " : "By "}</span>
+                                    <span className="text-xs text-gray-400">{article.author}, </span>
+                                </>
+                            )
+                        }
+                        <span className="text-xs text-gray-400">{new Date(article?.date || article._firstPublishedAt).toLocaleDateString()}</span>
 
                         <StructuredText
                             data={article.body}

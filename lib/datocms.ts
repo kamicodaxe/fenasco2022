@@ -22,6 +22,8 @@ export interface IArticle {
     title: string
     desc: string
     slug: string
+    author: string
+    date?: string
     coverImage: {
         id: string
         url: string
