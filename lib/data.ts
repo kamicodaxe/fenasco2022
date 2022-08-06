@@ -15,6 +15,7 @@ import wrestling from '../assets/images/sports/wrestling.svg'
 // No time to implement DB so I will had code the results everyday
 import athletics from './results/athletics'
 import footballResults from './results/footballResults'
+import tableTenisResults from './results/tableTenisResults'
 
 const sports = [
     {
@@ -71,7 +72,7 @@ const sports = [
         en: "Table Tennis",
         slug: "table-tenis",
         image: tableTenis,
-        // results: athletics
+        results: tableTenisResults
     },
     {
         name: "Sports paralympiques",

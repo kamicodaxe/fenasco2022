@@ -82,8 +82,10 @@ const Results: NextPage<Props> = () => {
                 break;
             case "eboys": return isFr ? "ENIEG - ENIET Messieurs" : "ENIEG - ENIET Boys"
                 break;
+            case "results": return isFr ? "Résultats" : "Results"
+                break;
 
-            default: return ''
+            default: return isFr ? '' : ''
                 break;
         }
     }

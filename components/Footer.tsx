@@ -33,7 +33,7 @@ const Footer: React.FC<Props> = ({ locale }) => {
     }, [])
 
     return (
-        <footer className="bg-[url('/images/background.png')] bg-cover text-gray-800 relative overflow-hidden" aria-labelledby="footer-heading">
+        <footer className="bg-[url('/images/footer_background.png')] bg-cover bg-center text-gray-800 relative overflow-hidden" aria-labelledby="footer-heading">
             <h2 id="footer-heading" className="sr-only">Footer</h2>
 
             <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-16">
