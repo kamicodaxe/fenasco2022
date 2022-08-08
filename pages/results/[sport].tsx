@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/router'
 import classNames from 'classnames'
 import type { NextPage } from 'next'
@@ -23,7 +23,8 @@ const Results: NextPage<Props> = () => {
     const title = (isFr ? "Résultats " : "Results ")
     const desc = slug + (isFr ? "Résultats de Match FENASSCO 2022" : "Match results FENASSCO 2022")
 
-    const [selectedTab, setSelected] = useState('girls')
+    // ts-ignore
+    const [selectedTab, setSelected] = useState('')
 
     const results = useMemo(() => {
         return sports.find(_sport => _sport.slug === slug)?.results
@@ -33,6 +34,10 @@ const Results: NextPage<Props> = () => {
         if (!results) return []
         return Object.keys(results)
     }, [results])
+
+    useEffect(() => {
+        if (games && games.length > 0) setSelected(games[0])
+    }, [games])
 
     const columns = useMemo(() => {
         const _columns: {
@@ -44,9 +49,11 @@ const Results: NextPage<Props> = () => {
             }
         }[] = []
 
-        if (games.length === 0 || !results) return _columns
+        // @ts-ignore
+        if (games.length === 0 || results?.length === 0 || !selectedTab || !results) return _columns
         // @ts-ignore
         const result = results[selectedTab]
+        if (!result) return _columns
         for (const key in result[0]) {
             if (Object.prototype.hasOwnProperty.call(result[0], key)) {
                 // const element = result[key];
@@ -62,7 +69,7 @@ const Results: NextPage<Props> = () => {
         }
         return _columns
 
-    }, [results])
+    }, [results, selectedTab])
 
     const data = useMemo(() => {
         if (!selectedTab || !results) return {}
@@ -125,7 +132,7 @@ const Results: NextPage<Props> = () => {
 
                     <div className='flex justify-around'>
                         {
-                            games.map(
+                            selectedTab && games.map(
                                 _game => <button key={_game} className={
                                     classNames(
                                         ["text-md capitalize self-stretch"],

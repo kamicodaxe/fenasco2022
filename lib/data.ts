@@ -14,8 +14,12 @@ import wrestling from '../assets/images/sports/wrestling.svg'
 
 // No time to implement DB so I will had code the results everyday
 import athletics from './results/athletics'
+import basketballResults from './results/basketballResults'
 import footballResults from './results/footballResults'
+import gymResults from './results/gymResults '
+import handballResults from './results/handballResults'
 import tableTenisResults from './results/tableTenisResults'
+import volleyResults from './results/volleyResults'
 
 const sports = [
     {
@@ -30,7 +34,7 @@ const sports = [
         en: "Basketball",
         slug: "basketball",
         image: basketball,
-        // results: athletics
+        results: basketballResults
     },
     {
         name: "Football",
@@ -44,14 +48,14 @@ const sports = [
         en: "Gymnastics",
         slug: "gymnastics",
         image: gymnast,
-        // results: athletics
+        results: gymResults
     },
     {
         name: "Handball",
         en: "Handball",
         slug: "handball",
         image: handball,
-        // results: athletics
+        results: handballResults
     },
     {
         name: "Judo",
@@ -86,7 +90,7 @@ const sports = [
         en: "Volleyball",
         slug: "volleyball",
         image: volleyball,
-        // results: athletics
+        results: volleyResults
     },
     {
         name: "Badminton",

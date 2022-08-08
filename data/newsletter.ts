@@ -3,6 +3,7 @@ import nl01 from '../assets/images/newsletter/01.jpg';
 import nl02 from '../assets/images/newsletter/02.jpg';
 import nl03 from '../assets/images/newsletter/03.jpg';
 import nl04 from '../assets/images/newsletter/04.jpg';
+import nl05 from '../assets/images/newsletter/05.jpg';
 
 const newsletter = [
     {
@@ -28,6 +29,12 @@ const newsletter = [
         en: "#4",
         dl: "/assets/news_letter_4.pdf",
         image: nl04
+    },
+    {
+        name: "#5",
+        en: "#5",
+        dl: "/assets/news_letter_5.pdf",
+        image: nl05
     },
 ]
 

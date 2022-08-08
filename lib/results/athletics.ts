@@ -6,21 +6,23 @@ const girls = [
         "200m": 0,
         "400m": 0,
         "1500m": 5,
-        "5000m": 3,
+        "5000m": 5,
         "Shot put": 1,
         "High Jump": 0, 
-        "Long Jump": 6, 
+        "Long Jump": 6,
+        "4x400m": 0
     },
     {
         name: "CE",
         "100m": 4,
-        "200m": 0,
+        "200m": 4,
         "400m": 0,
         "1500m": 5,
         "5000m": 7,
         "Shot put": 10,
         "High Jump": 10, 
-        "Long Jump": 0, 
+        "Long Jump": 0,
+        "4x400m": 6
     },
     {
         name: "ES",
@@ -31,7 +33,8 @@ const girls = [
         "5000m": 0,
         "Shot put": 7,
         "High Jump": 0, 
-        "Long Jump": 0, 
+        "Long Jump": 0,
+        "4x400m": 1
     },
     {
         name: "FN",
@@ -42,7 +45,8 @@ const girls = [
         "5000m": 5,
         "Shot put": 0,
         "High Jump": 0, 
-        "Long Jump": 9, 
+        "Long Jump": 9,
+        "4x400m": 4
     },
     {
         name: "LT",
@@ -53,7 +57,8 @@ const girls = [
         "5000m": 2,
         "Shot put": 6,
         "High Jump": 0, 
-        "Long Jump": 0, 
+        "Long Jump": 0,
+        "4x400m": 0 
     },
     {
         name: "NO",
@@ -64,7 +69,8 @@ const girls = [
         "5000m": 0,
         "Shot put": 0,
         "High Jump": 8, 
-        "Long Jump": 8, 
+        "Long Jump": 8,
+        "4x400m": 0 
     },
     {
         name: "NW",
@@ -75,7 +81,8 @@ const girls = [
         "5000m": 0,
         "Shot put": 0,
         "High Jump": 0, 
-        "Long Jump": 0, 
+        "Long Jump": 0,
+        "4x400m": 7
     },
     {
         name: "WE",
@@ -86,7 +93,8 @@ const girls = [
         "5000m": 0,
         "Shot put": 11,
         "High Jump": 10, 
-        "Long Jump": 4, 
+        "Long Jump": 4,
+        "4x400m": 2 
     },
     {
         name: "SO",
@@ -97,7 +105,8 @@ const girls = [
         "5000m": 13,
         "Shot put": 5,
         "High Jump": 4, 
-        "Long Jump": 4, 
+        "Long Jump": 4,
+        "4x400m": 0 
     },
     {
         name: "SW",
@@ -108,7 +117,8 @@ const girls = [
         "5000m": 6,
         "Shot put": 0,
         "High Jump": 0, 
-        "Long Jump": 5, 
+        "Long Jump": 5,
+        "4x400m": 3
     },
 ]
 
@@ -122,7 +132,8 @@ const boys = [
         "5000m": 10,
         "Shot put": 11,
         "High Jump": "", 
-        "Long Jump": 6, 
+        "Long Jump": 6,
+        "4x400m": 0 
     },
     {
         name: "CE",
@@ -133,7 +144,8 @@ const boys = [
         "5000m": 7,
         "Shot put": 10,
         "High Jump": 10, 
-        "Long Jump": 0, 
+        "Long Jump": 0,
+        "4x400m": 0 
     },
     {
         name: "ES",
@@ -144,7 +156,8 @@ const boys = [
         "5000m": 0,
         "Shot put": 7,
         "High Jump": 0, 
-        "Long Jump": 0, 
+        "Long Jump": 0,
+        "4x400m": 0 
     },
     {
         name: "FN",
@@ -155,7 +168,8 @@ const boys = [
         "5000m": 5,
         "Shot put": 0,
         "High Jump": 0, 
-        "Long Jump": 9, 
+        "Long Jump": 9,
+        "4x400m": 0 
     },
     {
         name: "LT",
@@ -166,7 +180,8 @@ const boys = [
         "5000m": 2,
         "Shot put": 6,
         "High Jump": 0, 
-        "Long Jump": 0, 
+        "Long Jump": 0,
+        "4x400m": 0 
     },
     {
         name: "NO",
@@ -177,7 +192,8 @@ const boys = [
         "5000m": 0,
         "Shot put": 0,
         "High Jump": 8, 
-        "Long Jump": 8, 
+        "Long Jump": 8,
+        "4x400m": 0 
     },
     {
         name: "NW",
@@ -188,7 +204,8 @@ const boys = [
         "5000m": 0,
         "Shot put": 0,
         "High Jump": 0, 
-        "Long Jump": 0, 
+        "Long Jump": 0,
+        "4x400m": 0 
     },
     {
         name: "WE",
@@ -199,7 +216,8 @@ const boys = [
         "5000m": 0,
         "Shot put": 11,
         "High Jump": 10, 
-        "Long Jump": 4, 
+        "Long Jump": 4,
+        "4x400m": 0 
     },
     {
         name: "SO",
@@ -210,7 +228,8 @@ const boys = [
         "5000m": 13,
         "Shot put": 5,
         "High Jump": 4, 
-        "Long Jump": 4, 
+        "Long Jump": 4,
+        "4x400m": 0 
     },
     {
         name: "SW",
@@ -221,7 +240,8 @@ const boys = [
         "5000m": 6,
         "Shot put": 0,
         "High Jump": 0, 
-        "Long Jump": 5, 
+        "Long Jump": 5,
+        "4x400m": 0 
     },
 ]
 
